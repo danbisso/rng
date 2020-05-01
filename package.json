@@ -11,10 +11,13 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "predeploy": "npm run build",
-    "deploy": "aws s3 sync build/ s3://danbisso-rng-app --delete",
-    "postdeploy": "aws cloudfront create-invalidation --distribution-id E2W51KGWO9BYW1 --paths '/*'",
+    "_deploy": "aws s3 sync build/ s3://danbisso-rng-app --delete",
+    "_postdeploy": "aws cloudfront create-invalidation --distribution-id E2W51KGWO9BYW1 --paths '/*'",
+    "deploy": "npx cdk deploy -a \"node stack.js\"",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "setup": "npx cdk bootstrap && npm deploy",
+    "destroy": "npx cdk destroy"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -30,5 +33,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@aws-cdk/aws-s3": "^1.36.1",
+    "@aws-cdk/aws-s3-deployment": "^1.36.1",
+    "@aws-cdk/core": "1.36.1",
+    "aws-cdk": "^1.36.1"
   }
 }
