@@ -1,9 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import { render, screen } from '@testing-library/react';
 import App from './App';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+test('renders Yes or no text', () => {
+  render(<App />);
+  const linkElement = screen.getByText(/Yes or no/i);
+  expect(linkElement).toBeInTheDocument();
 });
