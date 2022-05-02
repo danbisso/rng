@@ -35,7 +35,8 @@ class RngStack extends Stack {
     new BucketDeployment(this, 'DeployWebsite', {
       sources: [Source.asset('./build')],
       destinationBucket: frontEndBucket,
-      distribution: distribution
+      distribution,
+      distributionPaths: ['/*']
     });
   }
 }
