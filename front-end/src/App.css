@@ -31,6 +31,9 @@
   background-color: #282c34;
   font-size: 20px;
 }
+.App-button[disabled] {
+  background-color: #aaa;
+}
 .App-buttons {
   display: flex;
   max-width: 300px;
